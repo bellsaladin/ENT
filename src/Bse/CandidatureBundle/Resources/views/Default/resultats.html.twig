@@ -1,0 +1,116 @@
+{% extends 'BseCandidatureBundle::layout_inside.html.twig' %}
+
+{% block content_inside %}
+
+	{# dump(semestres_elementsPedagogiques) #}
+    <div class="page-heading">
+    	<h4 style="text-transform: uppercase;" class="pull-left"><b><i class="icon-graduation-cap"></i> Résultats annuels</b></h4>
+    	<span class="pull-right">
+    		<a href="{{ path('bse_candidature_pdf_resultats') }}" class="btn btn-sm btn-white-1" role="button"
+    		 data-toggle="tooltip" data-placement="left" title="Imprimez vos résultats annuels" target="_blank">
+    			Imprimer  <span class="glyphicon glyphicon-print" aria-hidden="true"></span>
+    		</a>
+    	</span>
+    	<!--<span class="pull-right">
+			<div class="btn-group">
+			  <button type="button" class="btn btn-sm btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			    Imprimer <span class="caret"></span>
+			  </button>
+			  <ul class="dropdown-menu">
+			    <li><a href="{{ path('bse_candidature_pdf_cursus') }}">Semestre 1</a></li>
+			    <li><a href="{{ path('bse_candidature_pdf_cursus') }}"><a href="#">Semestre 2</a></li>
+			  </ul>
+			</div>
+		</span>-->
+    </div>
+
+	<div class="widget widget-tabbed">
+		<div class="user-profile-content">	
+
+
+<table class="table">
+					<thead>
+					
+						<tr>	
+							<th rowspan="2">Type Elp</th>
+							<th rowspan="2">Libellé Elp</th>
+							<th colspan="2">Session 1</th>
+							<th colspan="2">Session 2</th>
+						</tr>
+						
+						<tr>			
+							<th>Note</th>
+							<th>Résultat</th>
+							<th>Note</th>
+							<th>Résultat</th>
+						</tr>
+					
+					</thead>
+			<tbody>
+
+
+			{% for cursus in elementsPedagogiques %}		
+			{% if cursus.codSession == "1" %}
+
+
+			<tr>
+					{% if cursus.libLse == "Module" %}
+					<td><strong>Module</strong></td>
+					<td style="padding-left:40px;">{{ cursus.libElp }}</td>
+					<td>{{ cursus.note }}</td>
+					<td>{{ cursus.resultat }}</td>
+					{% elseif cursus.libLse == "Elmt" %}
+					<td>Element</td>
+					<td style="padding-left:60px;">{{ cursus.libElp }}</td>
+					<td>{{ cursus.note }}</td>
+					<td>{{ cursus.resultat }}</td>
+					{% elseif cursus.libLse == "Année" %}
+					<td><strong>Année</strong></td>
+					<td><strong>{{ cursus.libElp }}</strong></td>
+					<td><strong>{{ cursus.note }}</strong></td>
+					<td><strong>{{ cursus.resultat }}</strong></td>
+					{% else %}
+					<td bgcolor="#F9F9F9"><strong>Semestre</strong></td>
+					<td bgcolor="#F9F9F9"><strong>{{ cursus.libElp }}</strong></td>
+					<td bgcolor="#F9F9F9"><strong>{{ cursus.note }}</strong></td>
+					<td bgcolor="#F9F9F9"><strong>{{ cursus.resultat }}</strong></td>
+					{% endif %}
+							
+			
+			{% for cursus1 in elementsPedagogiques %}
+			{% if cursus1.codSession=="2" and cursus.codElp==cursus1.codElp and cursus.codAnnee==cursus1.codAnnee %}
+				
+				{% if cursus1.libLse == "Module" %}
+					<td>{{ cursus1.note }}</td>
+					<td>{{ cursus1.resultat }}</td>
+					{% elseif cursus.libLse == "Elmt" %}
+					<td>{{ cursus1.note }}</td>
+					<td>{{ cursus1.resultat }}</td>
+					{% elseif cursus.libLse == "Année" %}
+					<td><strong>{{ cursus1.note }}</strong></td>
+					<td><strong>{{ cursus1.resultat }}</strong></td>
+					{% else %}
+					<td ><strong>{{ cursus1.note }}</strong></td>
+					<td><strong>{{ cursus1.resultat }}</strong></td>
+
+				{% endif %}
+
+
+			{% endif %}
+			{% endfor %}
+
+			</tr> 
+			{% endif %}
+			{% endfor %}
+
+	   		 </tbody>	
+		</table>
+
+
+
+    		
+				<br><br>
+		</div>
+	</div>
+
+{% endblock %}

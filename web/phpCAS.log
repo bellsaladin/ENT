@@ -1,0 +1,54 @@
+B8AA .START (2015-11-24 23:17:43) phpCAS-1.3.3+ ****************** [CAS.php:448]
+B8AA .=> phpCAS::client('2.0', '196.200.142.7', 8443, 'cas') [CASListener.php:43]
+B8AA .|    => CAS_Client::__construct('2.0', false, '196.200.142.7', 8443, 'cas', true) [CAS.php:341]
+B8AA .|    <= ''
+B8AA .<= ''
+B8AA .=> phpCAS::setNoCasServerValidation() [CASListener.php:57]
+B8AA .|    You have configured no validation of the legitimacy of the cas server. This is not recommended for production use. [CAS.php:1563]
+B8AA .<= ''
+B8AA .=> phpCAS::forceAuthentication() [CASListener.php:60]
+B8AA .|    => CAS_Client::forceAuthentication() [CAS.php:1025]
+B8AA .|    |    => CAS_Client::isAuthenticated() [Client.php:1248]
+B8AA .|    |    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1359]
+B8AA .|    |    |    |    no user found [Client.php:1601]
+B8AA .|    |    |    <= false
+B8AA .|    |    |    no ticket found [Client.php:1460]
+B8AA .|    |    <= false
+B8AA .|    |    => CAS_Client::redirectToCas(false) [Client.php:1257]
+B8AA .|    |    |    => CAS_Client::getServerLoginURL(false, false) [Client.php:1622]
+B8AA .|    |    |    |    => CAS_Client::getURL() [Client.php:342]
+B8AA .|    |    |    |    |    Final URI: http://localhost/UIT_ENT/web/app_dev.php [Client.php:3491]
+B8AA .|    |    |    |    <= 'http://localhost/UIT_ENT/web/app_dev.php'
+B8AA .|    |    |    <= 'https://196.200.142.7:8443/cas/login?service=http%3A%2F%2Flocalhost%2FUIT_ENT%2Fweb%2Fapp_dev.php'
+B8AA .|    |    |    Redirect to : https://196.200.142.7:8443/cas/login?service=http%3A%2F%2Flocalhost%2FUIT_ENT%2Fweb%2Fapp_dev.php [Client.php:1629]
+B8AA .|    |    |    exit()
+B8AA .|    |    |    -
+B8AA .|    |    -
+B8AA .|    -
+A456 .START (2015-11-24 23:21:36) phpCAS-1.3.3+ ****************** [CAS.php:448]
+A456 .=> phpCAS::client('2.0', '196.200.142.7', 8443, 'cas') [CASListener.php:43]
+A456 .|    => CAS_Client::__construct('2.0', false, '196.200.142.7', 8443, 'cas', true) [CAS.php:341]
+A456 .|    <= ''
+A456 .<= ''
+A456 .=> phpCAS::setNoCasServerValidation() [CASListener.php:57]
+A456 .|    You have configured no validation of the legitimacy of the cas server. This is not recommended for production use. [CAS.php:1563]
+A456 .<= ''
+A456 .=> phpCAS::forceAuthentication() [CASListener.php:60]
+A456 .|    => CAS_Client::forceAuthentication() [CAS.php:1025]
+A456 .|    |    => CAS_Client::isAuthenticated() [Client.php:1248]
+A456 .|    |    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1359]
+A456 .|    |    |    |    no user found [Client.php:1601]
+A456 .|    |    |    <= false
+A456 .|    |    |    no ticket found [Client.php:1460]
+A456 .|    |    <= false
+A456 .|    |    => CAS_Client::redirectToCas(false) [Client.php:1257]
+A456 .|    |    |    => CAS_Client::getServerLoginURL(false, false) [Client.php:1622]
+A456 .|    |    |    |    => CAS_Client::getURL() [Client.php:342]
+A456 .|    |    |    |    |    Final URI: http://localhost/UIT_ENT/web/app_dev.php [Client.php:3491]
+A456 .|    |    |    |    <= 'http://localhost/UIT_ENT/web/app_dev.php'
+A456 .|    |    |    <= 'https://196.200.142.7:8443/cas/login?service=http%3A%2F%2Flocalhost%2FUIT_ENT%2Fweb%2Fapp_dev.php'
+A456 .|    |    |    Redirect to : https://196.200.142.7:8443/cas/login?service=http%3A%2F%2Flocalhost%2FUIT_ENT%2Fweb%2Fapp_dev.php [Client.php:1629]
+A456 .|    |    |    exit()
+A456 .|    |    |    -
+A456 .|    |    -
+A456 .|    -

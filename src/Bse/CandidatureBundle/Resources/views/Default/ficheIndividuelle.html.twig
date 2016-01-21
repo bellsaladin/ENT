@@ -1,0 +1,242 @@
+{% extends 'BseCandidatureBundle::layout_inside.html.twig' %}
+
+{% block content_inside %}
+    <div class="page-heading">
+    	<h4 class="pull-left" style="text-transform: uppercase;"><b><i class='fa icon-user-3'></i><span> Fiche individuelle</b></h4>
+    	<span class="pull-right">
+    		<a href="{{ path('bse_candidature_pdf_attestationInscription') }}" class="btn btn-sm btn-white-1" role="button" data-toggle="tooltip" data-placement="left" title="Imprimez votre attestation d'inscription" target="_blank">
+    			Imprimer <span class="glyphicon glyphicon-print" aria-hidden="true"></span>
+    		</a>
+    	</span>
+    </div>
+    <br/><br/>
+    <div class="row">
+		
+		<div class="col-sm-12">
+			<div class="widget widget-tabbed">
+				<!-- Nav tab -->
+				<ul class="nav nav-tabs nav-justified">
+				  <li class="active"><a href="#about" data-toggle="tab"><i class="fa fa-user"></i> Informations générales</a></li>
+				  <li><a href="#inscription" data-toggle="tab"><i class="fa icon-newspaper-1"></i> Inscription</a></li>
+				  <li><a href="#etat-civil" data-toggle="tab"><i class="fa icon-vcard"></i> Etat civil</a></li>
+				  <li><a href="#adresse" data-toggle="tab"><i class="fa icon-address-book"></i> Adresse</a></li>
+				</ul>
+				<!-- End nav tab -->
+
+				<!-- Tab panes -->
+				<div class="tab-content">
+					
+
+					<!-- Tab about -->
+					<div class="tab-pane animated active fadeIn" id="about">
+					<div class="row" style="padding:10px">
+						<div class="col-sm-6" >
+										<h5><strong></strong></h5>
+										<hr/>
+											<address>
+												<strong>Prenom</strong><br>
+												{{ individu.prenom }}
+											</address>
+											<address>
+												<strong>Nom</strong><br>
+												{{ individu.nom }}
+											</address>											
+											<address>
+												<strong>code apogee</strong><br>
+												{{ individu.codApogee}}
+											</address>
+											<address>
+												<strong>N° Telephone</strong><br>
+												{{ individu.ntelephoneAnnuelle }}
+											</address>
+										</div>
+
+										<div class="col-sm-6">
+											<h5><strong></strong></h5>
+											<hr/>
+											<address>
+												<strong>الاسم</strong><br>
+												{{ individu.prenomArabe }}
+											</address>
+											<address>
+												<strong>النسب</strong><br>
+												{{ individu.nomArabe }}
+											</address>
+											<address>
+												<strong>Dernière inscription</strong><br>
+												{{ individu.codAnuIna }}
+											</address>
+											<address>
+												<strong>Inscription</strong><br>
+												{{ etape.libEtp }}
+											</address>
+										</div>
+						</div><!-- End div .user-profile-content -->
+					</div><!-- End div .tab-pane -->
+					<!-- End Tab about -->
+					
+					
+					
+					<div class="tab-pane animated fadeIn" id="inscription">
+						<div class="row" style="padding:10px">
+								<div class="col-sm-6">
+										<h5><strong> <table data-sortable class="table table-hover" > <tr bgcolor="#E6E6E6"><td>1 ère inscription</td></tr></table></strong></h5>
+
+										<hr/>
+											<address>
+												<strong>Dans l'enseignement supérieur</strong><br>
+												{{ individu.getDansEnsSup }}
+											</address>
+											<address>
+												<strong>En université marocaine</strong><br>
+												{{ individu.enUniveMarocain }}
+											</address>
+											<address>
+												<strong>Etablissement précedent</strong><br>
+												{{ individu.etablissement }}
+											</address>
+											<address>
+												<strong>Dans l'université Ibn Tofail</strong><br>
+												{{ individu.dansUitk }}
+											</address>
+										</div>
+
+										<div class="col-sm-6">
+											<h5><strong> <table data-sortable class="table table-hover" > <tr bgcolor="#E6E6E6"><td>Bac et équivalance</td></tr></table></strong></h5>
+											<hr/>
+											<address>
+												<strong>Série</strong><br>
+												{{ bac.serie }}
+											</address>
+											<address>
+												<strong>Année obtention</strong><br>
+												{{ bac.date }}
+											</address>
+											<address>
+												<strong>Mention</strong><br>
+												{{ bac.mention }}
+											</address>
+											<address>
+												<strong>Etablissement</strong><br>
+												{{ bac.etablissmenet }}
+											</address>
+										</div>
+							</div><!-- End div .row -->
+							
+					</div>
+
+					<div class="tab-pane animated fadeIn" id="etat-civil">
+						<div class="row" style="padding:10px">
+								<div class="col-sm-6">
+										<h5><strong> <table data-sortable class="table table-hover" > <tr bgcolor="#E6E6E6"><td>Etat civil</td></tr></table></strong></h5>
+										<hr/>
+											<address>
+												<strong>CIN</strong><br>
+												{{ individu.cin }}
+											</address>
+											<address>
+												<strong>CNE</strong><br>
+												{{ individu.cne }}
+											</address>
+											<address>
+												<strong>Nationalité</strong><br>
+												{{ individu.nationaliteNaissance}}
+											</address>
+											<address>
+												<strong>Situation familiale</strong><br>
+												{{ individu.situationFamiliale }}
+											</address>
+										</div>
+
+										<div class="col-sm-6">
+											<h5><strong> <table data-sortable class="table table-hover" > <tr bgcolor="#E6E6E6"><td>Naissance</td></tr></table></strong></h5>
+											<hr/>
+											<address>
+												<strong>Date et lieu</strong><br>
+												le {{ individu.dateNaissance |date("d/m/Y") }} à {{ individu.lieuNaissance }}
+											</address>
+											<address>
+												<strong>Pays</strong><br>
+												{{ individu.paysNaissance }}
+											</address>
+											<address>
+												<strong>Sexe</strong><br>
+												{{ individu.sexe }}
+											</address>
+											<address>
+												<strong>Handicap</strong><br>
+												{{ individu.handicap }}
+											</address>
+										</div>
+							</div><!-- End div .row -->
+							
+					</div>
+
+					<div class="tab-pane animated fadeIn" id="adresse">
+						<div class="row" style="padding:10px">
+								<div class="col-sm-6">
+										<h5><strong> <table data-sortable class="table table-hover" > <tr bgcolor="#E6E6E6"><td>Adresse fixe</td></tr></table></strong></h5>
+										<hr/>
+											<address>
+												<strong>Adresse</strong><br>
+												{{ individu.adresseFix | capitalize }}
+											</address>
+											<address>
+												<strong>Pays</strong><br>
+												{{ individu.paysFix }}
+											</address>
+											<address>
+												<strong>Code postal</strong><br>
+												{{ individu.codPostalFix }}
+											</address>
+											<address>
+												<strong>Commune</strong><br>
+												{{ individu.communFix }}
+											</address>
+											<address>
+												<strong>Province</strong><br>
+												{{ individu.provinceFix }}
+											</address>
+											<address>
+												<strong>N° Téléphone</strong><br>
+												{{ individu.ntelephoneFix }}
+											</address>
+										</div>
+
+										<div class="col-sm-6">
+											<h5><strong> <table data-sortable class="table table-hover" > <tr bgcolor="#E6E6E6"><td>Adresse année actuelle</td></tr></table></strong></h5>
+											<hr/>
+											<address>
+												<strong>Adresse</strong><br>
+												{{ individu.adresseAnnuelle }}
+											</address>
+											<address>
+												<strong>Pays</strong><br>
+												{{ individu.paysAnnuelle }}
+											</address>
+											<address>
+												<strong>Code postal</strong><br>
+												{{ individu.codPostalAnnuelle }}
+											</address>
+											<address>
+												<strong>Commune</strong><br>
+												{{ individu.communAnnuelle }}
+											</address>
+											<address>
+												<strong>Province</strong><br>
+												{{ individu.provinceAnnuelle }}
+											</address>
+											<address>
+												<strong>N° Téléphone</strong><br>
+												{{ individu.ntelephoneAnnuelle }}
+											</address>
+										</div>
+							</div><!-- End div .row -->
+							
+					</div>
+					
+				</div><!-- End div .tab-content -->
+			</div><!-- End div .box-info -->
+		</div>
+	</div>
+{% endblock %}

@@ -1,35 +1,255 @@
-{% extends 'BseCandidatureBundle::layout.html.twig' %}
+{% extends 'BseCandidatureBundle::layout_inside.html.twig' %}
 
-{% block subTitle %}Dossier de candidature{% endblock %}
+{% block content_inside %}
+    <div class="page-heading">
+        <h1>MON ESPACE</h1>
+    </div>    
 
-{% block content %}        
+    <style>
+        .widget .green-1, .widget .pink-1, .widget .darkblue-2 {width:100%}
+    </style>
 
-        {% for flashMessage in app.session.flashbag.get('notice') %}
-            <div class="alert alert-success">
-                {{ flashMessage }}
-            </div>
-        {% endfor %}
+    <div class="row">
+                
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+            <a href="{{ path('bse_candidature_ficheIndividuelle') }}" {% if app.request.get('_route') == 'bse_candidature_ficheIndividuelle' %} class="active" {% endif %}>
+                <div class="widget green-1 animated fadeInDown">
+                    <div class="widget-content padding">
+                        <div class="widget-icon">
+                            <i class="icon-user-3"></i>
+                        </div>
+                        
+                        <div class="text-box">
 
-        <br/>
-        <h4>N° du dossier : {{candidature.id}}</h4>        
-        <h4>Vous êtes candidat aux filières suivantes :</h4>        
-        <br/>        
-        <ul>
-        {% for filiere in filieresChoosed %}
-            <li style="margin-bottom: 15px;">
-                <b class="label label-info" style="font-size:12px">{{ filiere }}</b>
-            </li>
-        {% endfor %}
-        </ul>  
-        <br/>
-        <a href="{{ path('bse_candidature_generatePdf') }}">
-            Télécharger en PDF
-        </a>
-        <br/><hr/>        
-        <a class="btn btn-success btn-sm" href="{{ path('candidature_edit', { 'id': candidature.id }) }}">
-            Modifier votre candidature
-        </a>
-        <a class="btn btn-danger btn-sm" href="{{ url('fos_user_security_logout') }}">
-            Deconnexion
-        </a>        
+                            <h2><span>Fiche Individuelle</span></h2>
+                            <div class="clearfix"></div>
+                        </div>
+                        
+                    </div>
+                    <div class="widget-footer">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </a>
+        </div>
+           
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+             <a href="{{ path('bse_candidature_inscriptionPedagogique') }}" {% if app.request.get('_route') == 'bse_candidature_inscriptionPedagogique' %}
+class="active" {% endif %}>
+                <div class="widget green-1 animated fadeInDown">
+                    <div class="widget-content padding">
+                        <div class="widget-icon">
+                            <i class="icon-slideshare"></i>
+                        </div>
+                        <div class="text-box">
+
+                            <h2><span>Inscription pédagogique</span></h2>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                    <div class="widget-footer">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </a>
+        </div>
+            
+                    
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+            <a href="{{ path('bse_candidature_cursus') }}" {% if app.request.get('_route') == 'bse_candidature_cursus' %}
+class="active" {% endif %}>
+                <div class="widget green-1 animated fadeInDown">
+                    <div class="widget-content padding">
+                        <div class="widget-icon">
+                            <i class="icon-th-list"></i>
+                        </div>
+                        <div class="text-box">
+
+                            <h2><span>Cursus universitaire</span></h2>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                    <div class="widget-footer">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </a>    
+        </div>
+    <!--</div>
+
+    <div class="row">-->
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+            <a href="{{ path('bse_candidature_resultats') }}" {% if app.request.get('_route') == 'bse_candidature_resultats' %}
+class="active" {% endif %}>
+                <div class="widget pink-1 animated fadeInDown">
+                    <div class="widget-content padding">
+                        <div class="widget-icon">
+                            <i class="icon-graduation-cap"></i>
+                        </div>
+                        <div class="text-box">
+
+                            <h2><span>Résultats annuels</span></h2>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                    <div class="widget-footer">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+            <a href="{{ path('bse_candidature_examens') }}" {% if app.request.get('_route') == 'bse_candidature_examens' %}
+class="active" {% endif %}>
+                <div class="widget pink-1 animated fadeInDown">
+                    <div class="widget-content padding">
+                        <div class="widget-icon">
+                            <i class="icon-calendar-circled"></i>
+                        </div>
+                        <div class="text-box">
+
+                            <h2><span>Calendrier des examen </span></h2>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                    <div class="widget-footer">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </a>
+        </div>
+<!--
+<a href="{{ path('bse_candidature_emploiDuTemps') }}" {% if app.request.get('_route') == 'bse_candidature_emploiDuTemps' %}
+    class="active" {% endif %}>
+-->     
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+            <a href="#" {% if app.request.get('_route') == 'bse_candidature_emploiDuTemps' %} class="active" {% endif %}>
+                <div class="widget pink-1 animated fadeInDown">
+                    <div class="widget-content padding">
+                        <div class="widget-icon">
+                            <i class="icon-calendar-1"></i>
+                        </div>
+                        <div class="text-box">
+
+                            <h2><span>Emploi du temps</span></h2>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                    <div class="widget-footer">
+                        <div class="row">
+                            <div class="col-sm-12"> 
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    
+    <!--</div>
+    <div class="row">-->
+
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+            <a href="http://elearning.univ-ibntofail.ac.ma/moodle/">
+                <div class="widget darkblue-2 animated fadeInDown">
+                    <div class="widget-content padding">
+                        <div class="widget-icon">
+                            <i class="icon-laptop"></i>
+                        </div>
+                        <div class="text-box">
+
+                            <h2><span>Moodle e-learning</span></h2>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                    <div class="widget-footer">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </a> 
+        </div>
+        
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+            <a href="https://login.microsoftonline.com/login.srf?wa=wsignin1.0&rpsnv=4&ct=1435376235&rver=6.6.6556.0&wp=MBI_SSL&wreply=https:%2F%2Foutlook.office365.com%2Fowa%2F&id=260563&CBCXT=out">
+                <div class="widget darkblue-2 animated fadeInDown">
+                    <div class="widget-content padding">
+                        <div class="widget-icon">
+                            <i class="icon-mail-2"></i>
+                        </div>
+                        <div class="text-box">
+
+                            <h2><span>Messagerie électronique</span></h2>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                    <div class="widget-footer">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </a>    
+        </div>
+
+        
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+            <a href="http://www.univ-ibntofail.ac.ma/">
+                <div class="widget darkblue-2 animated fadeInDown">
+                    <div class="widget-content padding">
+                        <div class="widget-icon">
+                            <i class="icon-network"></i>
+                        </div>
+                        <div class="text-box">
+
+                            <h2><span>Site Web université</span></h2>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                    <div class="widget-footer">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </a>    
+        </div>
+    </div>
+    
 {% endblock %}

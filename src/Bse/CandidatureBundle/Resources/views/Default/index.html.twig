@@ -1,37 +1,51 @@
-{% extends 'BseCandidatureBundle::layout.html.twig' %}
-
-{% block subTitle %}Accueil {% endblock %}
+{% extends 'BseCandidatureBundle::layout_base.html.twig' %}
 
 {% block content %}
-	<br/><br/><br/>
-    <div class="row">
-	    <div class="col-xs-12 col-sm-6">
-	    	<h4>Voulez-vous déposer une nouvelle candidature ?</h4>
-	    	<hr/>
-	    	<p>S'il s'agit de votre toute première candidature et que vous ne disposez pas de dossier de candidature, vous allez devoir déposer votre candidature en cliquant sur le button ci-dessous.<br/><br/>    	
-	    	<a href="{{ url('candidature_procedure') }}"><button type="button" id="btnLogin" class="btn btn-success btn-sm">Nouvelle candidature</button></a>
-	    	</p>
-	    </div>
-	    <div class="col-xs-12 col-sm-6">
-	    	<h4>Vous disposez déjà d'un dossier</h4>
-	    	<hr/>
-	    	<p>Saisissez votre email et mot de passe pour consulter votre dossier.</p>
-	    	{% if error %}
+  
+    <style>
+      body{ 
+        background-image:url({{ asset('bundles/bsecandidature/img/imguniv.png') }} );
+        background-repeat:no-repeat;
+        width: auto;
+        no-repeat center center fixed; 
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover; 
+      ); 
+    </style>
+
+		<div class="full-content-center" style="background : rgba(255, 255, 255, 0.42) none repeat scroll 0% 0%; box-shadow: 3px 3px 16px #555;   z-index: 999999999; box-shadow: rgba(0, 0, 0, 0.3); border-radius: 6px; overflow: hidden; overflow-x: hidden; overflow-y: hidden;">
+			<p class="text-center"><a href="#"><img src="{{ asset('bundles/bsecandidature/img/Untitled.png') }}" alt="Logo" width="46%" ></a></p>
+			<div class="login-wrap">
+				<div class="login-block">
+					<form class="form" action="{{ path("fos_user_security_check") }}" method="post"> 
+			{% if error %}
 			    <div class="alert alert-danger" role="alert">{{ error|trans({}, 'FOSUserBundle') }}</div>
 			{% endif %}
-	    	<form class="form" action="{{ path("fos_user_security_check") }}" method="post"> 
-	    		<input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
-                
-                <input name="_username" id="email" type="text" value="{{ last_username }}" placeholder="Email" class="form-control input-sm" required="required" ><br/> 
-                
-                <input name="_password" required="required"  type="password" placeholder="Mot de passe" class="form-control input-sm"><br>
-                
-                <input type="submit" required="required" class="btn btn-info btn-sm pull-left" value="Accèder à mon dossier"/>
-                <div><div><a data-toggle="modal" href="{{ url('fos_user_resetting_request') }}" style="display: block;margin:5px 157px 0">Mot de passe oublié ?</a></div></div>
-            </form>
-	    </div>
-	    <div class="col-xs-12 col-sm-12" style="margin-top:70px">
-	    	<p style="text-align:center"><b>Contact</b> : <u>echarfaoui@hotmail.com</u></p>
-	    </div>
-	</div>
+
+						<div class="form-group login-input">
+						<i class="fa fa-user overlay"></i>
+						<input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+               			 <!--<input name="_username" id="email" type="text" value="{{ last_username }}"  placeholder="Code apogee" class="form-control text-input" required="required" >-->
+                     <input name="_username" id="email" type="text" value=""  placeholder="Code apogee" class="form-control text-input" required="required" >
+						</div>
+						<div class="form-group login-input">
+						<i class="fa fa-key overlay"></i>
+ 						<input name="_password" required="required"  type="password" placeholder="CNE" class="form-control text-input" value="">
+						</div>
+				        <input type="hidden" name="_target_path" value="/" />
+						<div class="row">
+							<div class="col-sm-12">
+								<center>
+									<input type="submit" required="required" class="btn btn-success btn-block" value="S'identifier"/>
+
+								</center>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+
 {% endblock %}

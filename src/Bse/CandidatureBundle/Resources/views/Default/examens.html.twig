@@ -1,0 +1,65 @@
+{% extends 'BseCandidatureBundle::layout_inside.html.twig' %}
+
+{% block content_inside %} 
+    <div class="page-heading">
+        <h4 class="pull-left" style="text-transform: uppercase;"><b><i class="fa icon-calendar-circled"></i>Calendrier des examens</b></h4>
+<span class="pull-right">
+    		<a href="{{ path('bse_candidature_pdf_examens') }}" class="btn btn-sm btn-white-1" role="button"
+    		 data-toggle="tooltip" data-placement="left" title="Imprimez votre calendrier des examen" target="_blank">
+    			Imprimer  <span class="glyphicon glyphicon-print" aria-hidden="true"></span>
+    		</a>
+    	</span>
+    </div>
+    <div class="row">
+   
+
+<table class="table">
+<tr>
+                <th align="center"><Strong>Date</Strong></th>
+                <th align="center"><Strong>Heure</Strong></th>
+                <th align="center"><Strong>Controle</Strong></th>
+                <th align="center"><Strong>Duree</Strong></th>
+                <th align="center"><Strong>Salle</Strong></th>
+
+</tr>
+
+{% set date1 = "now"|date_modify("-30 day") %}
+{% set date2 = "now"|date_modify("+30 day") %}
+
+{% for exa in examens %}
+
+
+{% if exa.dateDeb|date("d/m/Y")  %}
+<tr>
+<td> {{ exa.dateDeb |date("d/m/Y") }} </td>
+<td> {{ exa.dhhDeb }} </td>
+<td> {{ exa.libEpr }} </td>
+<td> {{ exa.durExaEpr/60 }} h </td>
+<td> {{ exa.salle }} </td>
+</tr>
+
+{% endif %}
+{% endfor %}
+
+</table>
+
+<!--
+{% set tomorrow = "now"|date_modify("+30 day") %}
+<p>Tomorrow’s date is {{ tomorrow|date("d/m/Y") }}.</p> 
+-->
+
+    </div>
+{% endblock %}
+
+{% block extra_css %}
+    <link href="{{ asset('bundles/uitent/libs/bootstrap-timetable/css/tribal-timetable.css') }}" rel="stylesheet" />
+    <link href="{{ asset('bundles/uitent/libs/bootstrap-timetable/css/tribal-timetable.css') }}" rel="stylesheet" />
+{% endblock %}
+
+{% block extra_js %}
+    <script src="{{ asset('bundles/uitent/libs/bootstrap-timetable/js/tribal.js') }}"></script>
+    <script src="{{ asset('bundles/uitent/libs/bootstrap-timetable/js/tribal-timetable.js') }}"></script>
+    <script src="{{ asset('bundles/uitent/libs/bootstrap-timetable/js/tribal-shared.js') }}"></script>
+    <script src="{{ asset('bundles/uitent/libs/bootstrap-timetable/js/bootstrap-tooltip.js') }}"></script>
+    <script src="{{ asset('bundles/uitent/libs/bootstrap-timetable/js/bootstrap-collapse.js') }}"></script>
+{% endblock %}

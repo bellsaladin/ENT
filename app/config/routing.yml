@@ -22,5 +22,5 @@ fos_user_change_password:
     prefix: /profile
 
 fos_user_profile_show:
-    pattern: /candidature
+    pattern: /
     defaults : { _controller:BseCandidatureBundle:Candidature:index }

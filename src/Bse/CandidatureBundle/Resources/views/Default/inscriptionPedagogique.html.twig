@@ -1,0 +1,87 @@
+{% extends 'BseCandidatureBundle::layout_inside.html.twig' %}
+
+{% block content_inside %}
+    <div class="page-heading">
+    	<h4 class="pull-left" style="text-transform: uppercase;"><b><i class='fa icon-slideshare'></i>Inscription pédagogique</b></h4>
+    	<span class="pull-right">
+    		<a href="{{ path('bse_candidature_pdf_inscriptionPedagogique') }}" class="btn btn-sm btn-white-1" role="button"
+    		 data-toggle="tooltip" data-placement="left" title="Imprimez l'inscription pédagogique" target="_blank">
+    			Imprimer  <span class="glyphicon glyphicon-print" aria-hidden="true"></span>
+    		</a>
+    	</span>
+    </div>
+ 
+	<div class="widget widget-tabbed">
+		<div class="user-profile-content">	
+
+		    <table class="table">
+				<thead>
+					<tr>	
+						<th>Type </th>
+						<th>Libellé </th>
+					</tr>
+				</thead>
+				<tbody>
+
+				{% for cursus in elementsPedagogiques %}
+									
+
+							{% if cursus.libLse=="Module" %}
+								<tr>
+									<td>Module</td>
+									<td style="padding-left:40px">{{ cursus.libElp }}</td>
+								</tr>
+			  				
+							{% elseif cursus.libLse=="Elmt" %}	
+								<tr>
+									<td>Element</td>
+									<td style="padding-left:80px">{{ cursus.libElp }}</td>
+								</tr>
+
+							{% elseif cursus.libLse=="Année" %}	
+								<tr>
+									<td><strong>Année</strong></td>
+									<td><strong>{{ cursus.libElp }}</strong></td>
+								</tr>	
+							{% else %}	
+			  			 		 <tr bgcolor="#F9F9F9">
+									<td ><strong>Semestre</strong></td>
+									<td ><strong>{{ cursus.libElp }}<strong></td>
+								</tr>
+							{% endif %}
+
+			  	{% endfor %}
+		   	
+		   	</tbody>	
+			</table>
+
+		</div>
+	</div>
+
+			</table>
+
+		</div>
+	</div>
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}
+
+
+{% block extra_css %}
+
+{% endblock %}
+
+{% block extra_js %}
+	
+{% endblock %}
+
+

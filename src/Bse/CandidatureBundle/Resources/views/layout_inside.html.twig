@@ -1,0 +1,158 @@
+{% extends 'BseCandidatureBundle::layout_base.html.twig' %}
+
+{% block content %}
+    <!-- Top Bar Start -->
+		<div class="topbar">
+		    <div class="topbar-left">
+		        <div class="logo">
+		            <h1><a href="#"><img src="{{ asset('bundles/bsecandidature/img/logo_universite_copy.png') }}" alt="Logo" width="30"></a> ENT <span style="color:#fff; font-weight:normal;font-size: 9px;margin-top: -25px;display: block;"><B>Université Ibn Tofail</B></span></h1>
+		        </div>
+		        <button class="button-menu-mobile open-left">
+		        <i class="fa fa-bars"></i>
+		        </button>
+		    </div>
+
+		    
+		    
+		    <!-- Button mobile view to collapse sidebar menu -->
+		    <div class="navbar navbar-default" role="navigation">
+		        <div class="container">
+		            <div class="navbar-collapse2">
+
+		                <!--<ul class="nav navbar-nav hidden-xs">
+		                    <li class="dropdown">
+		                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-th"></i></a>
+		                        <div class="dropdown-menu grid-dropdown">
+		                            <div class="row stacked">
+		                                <div class="col-xs-4">
+		                                    <a href="javascript:;" data-app="notes-app" data-status="active"><i class="icon-edit"></i>Notes</a>
+		                                </div>
+		                                <div class="col-xs-4">
+		                                    <a href="javascript:;" data-app="todo-app" data-status="active"><i class="icon-check"></i>Todo List</a>
+		                                </div>
+		                                <div class="col-xs-4">
+		                                    <a href="javascript:;" data-app="calc" data-status="inactive"><i class="fa fa-calculator"></i>Calculator</a>
+		                                </div>
+		                            </div>
+		                            <div class="row stacked">
+		                                <div class="col-xs-4">
+		                                    <a href="javascript:;" data-app="weather-widget" data-status="active"><i class="icon-cloud-3"></i>Weather</a>
+		                                </div>
+		                                <div class="col-xs-4">
+		                                    <a href="javascript:;" data-app="calendar-widget2" data-status="active"><i class="icon-calendar"></i>Calendar</a>
+		                                </div>
+		                                <div class="col-xs-4">
+		                                    <a href="javascript:;" data-app="stock-app" data-status="inactive"><i class="icon-chart-line"></i>Stocks</a>
+		                                </div>
+		                            </div>
+		                            <div class="clearfix"></div>
+		                        </div>
+		                    </li>
+		                </ul>-->
+		                <ul class="nav navbar-nav navbar-right top-navbar">
+		                    <li class="dropdown topbar-profile">		    	
+		                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b> {{ individu.nom }} {{ individu.prenom }} </b> <i class="fa fa-caret-down"></i></a>
+		                        <ul class="dropdown-menu">
+		                           <!--  <li><a href="#">Mon Profil</a></li>
+		                            <li><a href="#">Changer de mot de passe</a></li>
+		                            <li><a href="#">Paramètres du compte</a></li>
+		                            <li class="divider"></li>
+		                            <li><a href="#"><i class="icon-help-2"></i> Aide</a></li>
+		                            <li><a href="lockscreen.html"><i class="icon-lock-1"></i> Verrouiller</a></li> -->
+		                            <li><a href="{{ url('bse_candidature_welcome') }}?logout=" class="md-trigger" data-modal="logout-modal"><i class="icon-logout-1"></i> Se déconnecter</a></li>
+		                        </ul>
+		                    </li>
+		                    <li class="dropdown iconify hide-phone"><a href="#" onclick="javascript:toggle_fullscreen()"><i class="icon-resize-full-2"></i></a></li>
+		                    <!--<li class="right-opener">
+		                        <a href="javascript:;" class="open-right"><i class="fa fa-angle-double-left"></i><i class="fa fa-angle-double-right"></i></a>
+		                    </li>-->
+		                </ul>
+		            </div>
+		            <!--/.nav-collapse -->
+		        </div>
+		    </div>
+		</div>
+		<!-- Top Bar End -->
+		        <!-- Left Sidebar Start -->
+		        <div class="left side-menu">
+		            <div class="sidebar-inner slimscrollleft">
+		               <!-- Search form -->
+		                <form role="search" class="navbar-form">
+		                    <div class="form-group">
+		                        <input type="text" placeholder="Recherche" class="form-control">
+		                        <button type="submit" class="btn search-button"><i class="fa fa-search"></i></button>
+		                    </div>
+		                </form>
+		                <div class="clearfix"></div>
+		                <!--- Profile -->
+		                <div class="profile-info">
+		                    <div class="col-xs-4">
+		                      <a href="#" class="rounded-image profile-image"><!--<img src="{{ asset('bundles/bsecandidature/images/users/user-100.jpg') }}">--></a>
+		                    </div>
+		                    <div class="col-xs-8">
+		                        <div class="profile-text">Bienvenue <b> <h5> <font color="#000000">{{ individu.nom }} {{ individu.prenom }}<!---{{ app.user.username }}--></h5></font>
+
+</b></div>
+		                        <div class="profile-buttons">
+		                          <!--<a href="javascript:;"><i class="fa fa-envelope-o pulse"></i></a>
+		                          <a href="#connect" class="open-right"><i class="fa fa-comments"></i></a>-->
+		                          <a href="#" class="md-trigger" data-modal="logout-modal"><i class="fa fa-power-off text-red-1"></i></a>
+		                        </div>
+		                    </div>
+		                </div>
+		                <!--- Divider -->
+		                <div class="clearfix"></div>
+		                <hr class="divider" />
+		                <div class="clearfix"></div>
+		                <!--- Divider -->
+		                <div id="sidebar-menu">
+		                    <ul>
+		                    {% block sidebar %}
+		                        {% include 'BseCandidatureBundle:LayoutComponents:sidebar.html.twig' %}
+		                    {% endblock %}
+		                    </ul>
+		                    <div class="clearfix"></div>
+		                </div>
+		            <div class="clearfix"></div>
+		            <div class="clearfix"></div><br><br><br>
+		        </div>
+		        </div>
+		        <!-- Left Sidebar End -->   
+		    <!-- Start right content -->
+		        <div class="content-page">
+		      <!-- ============================================================== -->
+		      <!-- Start Content here -->
+		      <!-- ============================================================== -->
+		            <div class="content">
+		       
+		    <table style="background: #E16B5D none repeat scroll 0% 0%;border-radius: 4px; width:100%">
+		    	<tr><td><i class="fa fa-envelope fa-2" style="color: rgb(255, 255, 255); font-size: 24px; padding: 5px 4px 5px 14px;"></i></td><td style="padding: 4px 14px 0 0; color:#fff;"><marquee><B> Université Ibn Tofail Kénitra. Site Web: www.univ-ibntofail.ac.ma. Téléphone: 0537329200. E-mail: uit@uit.ac.ma. Fax: 0537374052. Date de création: 1989. &nbsp; &nbsp; <img src="{{ asset('bundles/bsecandidature/img/logo_universite_copy.png') }}" alt="Logo" width="20"> &nbsp; &nbsp; Dans le cadre de la campagne d’inscription obligatoire à l’Assurance Maladie de Base gratuite (AMO), tous les étudiants de l'Université Ibn Tofail doivent s’inscrire sur la plateforme en ligne à partir du jeudi 17/12/2015, à l'adresse:
+formation-cme.imist.ma</marquee></B></td></tr>
+		    </table> 
+<br>
+				        {% block content_inside %}
+
+				        {% endblock %}
+		            </div>
+
+		                      <!-- Footer Start -->
+		            <footer>
+		                <!--Université Ibn Tofail &copy; 2015-->
+		                <div class="footer-links pull-right">
+		                  <!--<a href="#">A propos</a><a href="#">Aide</a><a href="#">Contact</a>-->
+		                  Université Ibn Tofail &copy; 2016&nbsp;&nbsp;&nbsp;&nbsp;
+		                </div>
+		            </footer>
+		            <!-- Footer End -->     
+		            </div>
+		      <!-- ============================================================== -->
+		      <!-- End content here -->
+		      <!-- ============================================================== -->
+
+        </div>
+    <!-- End right content -->
+
+
+
+
+{% endblock %}

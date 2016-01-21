@@ -1,0 +1,199 @@
+<table>
+	<tr style="line-height:20px">
+	    <td><b>ROYAUME DU MAROC</b></td>
+		<td rowspan="3" align="center"> <img src="{{ asset('bundles/bsecandidature/img/logo_universite.png') }}" alt="Logo" height="70" width="70"> </TD>
+	    <td td align="right">المملكة المغربية</td>
+    </tr>
+	<tr style="line-height:20px">
+	    <td><b>Université Ibn Tofail</b></td>
+	    <td align="right">جامعة إبن طفيل</td>
+    </tr>
+	<tr style="line-height:20px">
+	    <td><b>{{ individu.libelleLongEtablissement }}</b></td>
+	    <td align="right">
+{{ individu.libetablissementarabe }}
+	    </td>
+    </tr>
+</table>
+
+<br><br>
+<center>
+<table style="width:100%">
+<tr><td>
+<table>
+<tr>
+<td></td>
+<td>Nom : </td><td>{{ individu.nom }}</td>
+</tr>
+<tr>
+<td></td>
+<td>Prenom: </td><td>{{ individu.prenom }}</td>
+</tr>
+<tr>
+<td></td>
+<td>Code apogee: </td><td>{{ individu.codApogee }}</td>
+</tr>
+</table>
+</td>
+<td>
+<table>
+<tr>
+<td>CIN : </td><td>{{ individu.cin }}</td>
+<td></td>
+</tr>
+<tr>
+<td>CNE: </td><td>{{ individu.cne }}</td>
+<td></td>
+</tr>
+<tr>
+<td>Date Naissance: </td><td>{{ individu.dateNaissance |date("d/m/Y") }}</td>
+<td></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+
+<p align="center">  Kénitra le {{ "now"|date("m/d/Y") }} </p>
+<h2><U><B><p align="center">Résultats Annuels</p></B></U></h2><br>
+
+<br><br>
+
+		
+	<table>
+					<thead>
+					
+						<tr>	
+				<td rowspan="2"><b>Type Elp</b></td>
+				<td style="width:230px" rowspan="2"><b>Libellé Elp</b></td>
+				<td style="width:90px;" colspan="2"><b>Session 1</b></td>
+				<td style="width:90px;" colspan="2"><b>Session 2</b></td>
+						</tr>
+						
+						<tr>			
+				<td style="width:45px;"><b>Note</b></td>
+				<td style="width:45px;"><b>Résultat</b></td>
+				<td style="width:45px;"><b>Note</b></td>
+				<td style="width:45px;"><b>Résultat</b></td>
+						</tr>
+					<tr><td></td><td></td><td></td><td></td></tr>
+					</thead>
+			<tbody>
+
+
+			{% for cursus in elementsPedagogiques %}		
+			{% if cursus.codSession == "1" %}
+
+
+			<tr>
+					{% if cursus.libLse == "Module" %}
+					<td>Module</td>
+					<td style="width:230px;padding-left:20px;">{{ cursus.libElp }}</td>
+					<td style="width:45px;">{{ cursus.note }}</td>
+					<td style="width:45px;">{{ cursus.resultat }}</td>
+					{% elseif cursus.libLse == "Elmt" %}
+					<td>Element</td>
+					<td style="width:230px;padding-left:40px;">{{ cursus.libElp }}</td>
+					<td style="width:45px;">{{ cursus.note }}</td>
+					<td style="width:45px;">{{ cursus.resultat }}</td>
+					{% elseif cursus.libLse == "Année" %}
+					<td><strong>Année</strong></td>
+					<td style="width:230px"><strong>{{ cursus.libElp }}</strong></td>
+					<td style="width:45px;"><strong>{{ cursus.note }}</strong></td>
+					<td style="width:45px;"><strong>{{ cursus.resultat }}</strong></td>
+					{% else %}
+					<td><strong>Semestre</strong></td>
+					<td style="width:230px"><strong>{{ cursus.libElp }}</strong></td>
+					<td style="width:45px;"><strong>{{ cursus.note }}</strong></td>
+					<td style="width:45px;"><strong>{{ cursus.resultat }}</strong></td>
+					{% endif %}
+							
+			
+			{% for cursus1 in elementsPedagogiques %}
+			{% if cursus1.codSession=="2" and cursus.codElp==cursus1.codElp and cursus.codAnnee==cursus1.codAnnee %}
+				
+				{% if cursus1.libLse == "Module" %}
+					<td style="width:45px;">{{ cursus1.note }}</td>
+					<td style="width:45px;">{{ cursus1.resultat }}</td>
+					{% elseif cursus.libLse == "Elmt" %}
+					<td style="width:45px;">{{ cursus1.note }}</td>
+					<td style="width:45px;">{{ cursus1.resultat }}</td>
+					{% elseif cursus.libLse == "Année" %}
+					<td style="width:45px;"><strong>{{ cursus1.note }}</strong></td>
+					<td style="width:45px;"><strong>{{ cursus1.resultat }}</strong></td>
+					{% else %}
+					<td style="width:45px;"><strong>{{ cursus1.note }}</strong></td>
+					<td style="width:45px;"><strong>{{ cursus1.resultat }}</strong></td>
+					
+				{% endif %}
+
+
+							
+
+		
+			{% endif %}
+			{% endfor %}
+
+			</tr> 
+			{% endif %}
+			{% endfor %}
+
+	   		 </tbody>	
+		</table>
+
+
+<br><br><br><br><br>
+<table style="width:100%"><tr><td align="right"> Fait à Kenitra, le {{ "now"|date("d/m/Y") }}
+</td></tr></table> 
+
+<div style="text-align:right;width:100%">
+	
+		{% if (individu.libelleCourtEtablissement == 'ENSA Kenit') %}
+		 <img src="{{ asset('bundles/bsecandidature/img/ENSA.png') }}" alt="Logo" height="50" width="50"> 
+		{% endif %}
+		{% if (individu.libelleCourtEtablissement == 'ENCG Keni') %}
+		 <img src="{{ asset('bundles/bsecandidature/img/ENCG.png') }}" alt="Logo" height="50" width="50"> 
+		{% endif %}
+		{% if (individu.libelleCourtEtablissement == 'F.Lettres') %}
+		<img src="{{ asset('bundles/bsecandidature/img/FL.png') }}" alt="Logo" height="50" width="50"> 
+		{% endif %}
+		{% if (individu.libelleCourtEtablissement == 'F.Sciences') %}
+		 <img src="{{ asset('bundles/bsecandidature/img/FS.png') }}" alt="Logo" height="50" width="50"> 
+		{% endif %}
+		{% if (individu.libelleCourtEtablissement == 'FacScJurid') %}
+		<img src="{{ asset('bundles/bsecandidature/img/FD.png') }}" alt="Logo" height="50" width="50"> 
+		{% endif %}  
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</div> 
+
+
+
+<table style="width:100%"><tr><td align="right"> {{ individu.codApogee }} <br/>  </td></tr></table>  <br>
+
+<hr>
+<table><tr style="line-height:20px"><td>Adresse : {{ individu.AdresseEtablissement }} </td>
+
+	<td align="right"> 
+		{% if (individu.libelleCourtEtablissement == 'ENSA Kenit') %}
+		 ص ب: 242 
+		{% endif %}
+		{% if (individu.libelleCourtEtablissement == 'ENCG Keni') %}
+		 ص ب: 1422 
+		{% endif %}
+		{% if (individu.libelleCourtEtablissement == 'F.Lettres') %}
+		 ص ب: 401 
+		{% endif %}
+		{% if (individu.libelleCourtEtablissement == 'F.Sciences') %}
+		 ص ب: 133 
+		{% endif %}
+		{% if (individu.libelleCourtEtablissement == 'FacScJurid') %}
+		 ص ب: 242 
+		{% endif %} العنوان:
+
+	</td></tr>
+<tr><td> {{ individu.VillepaysEtablissement }} </td><td align="right"> القنيطرة - المغرب</td></tr>
+<tr><td> {{ individu.TelephoneEtablissement }} </td><td></td></tr></table>
+<hr>
+
+<br/><br/>
+

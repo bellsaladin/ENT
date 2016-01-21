@@ -1,0 +1,103 @@
+﻿
+<table>
+	<tr style="line-height:20px">
+	    <td><b>ROYAUME DU MAROC</b></td>
+		<td rowspan="3" align="center"> <img src="{{ asset('bundles/bsecandidature/img/logo_universite.png') }}" alt="Logo" height="70" width="70"> </TD>
+	    <td td align="right">المملكة المغربية</td>
+    </tr>
+	<tr style="line-height:20px">
+	    <td><b>Université Ibn Tofail</b></td>
+	    <td align="right">جامعة إبن طفيل</td>
+    </tr>
+	<tr style="line-height:20px">
+	    <td><b>{{ individu.libelleLongEtablissement }}</b></td>
+	    <td align="right">
+
+	 {{ individu.libetablissementarabe }}
+		
+	    </td>
+    </tr>
+</table>
+
+<br><br>
+
+<table>
+	<tr style="line-height:20px">
+	    <td><b>Service des Affaires Estudiantines</b></td>
+	    <td align="right">مصلحة الشؤون الطلابية</td>
+    </tr>
+</table>
+
+<br><br>
+
+<h2><U><B><p align="center">ATTESTATION DE SCOLARITE</p></B></U></h2><br>
+{% if (individu.libelleCourtEtablissement == 'ENSA Kenit' or individu.libelleCourtEtablissement == 'ENCG Keni') %}
+Le directeur de l'{{individu.libelleLongEtablissement }} atteste que l'
+{% else %}
+Le Doyen de la {{ individu.libelleLongEtablissement }} atteste que l'
+{% endif %}
+étudiant{% if individu.sexe == 'F' %}e{% endif %} <br><br>
+{% if individu.sexe == 'F' and individu.situationFamiliale == 'CELIBATAIRE' %}Mademoiselle 
+{% elseif individu.sexe == 'F' %}Madame {% else %}Monsieur {% endif %} <b>{{ individu.nom }} {{ individu.prenom}} </b><br><br>
+Numéro de la carte d'identité nationale : {{ individu.cin }} <br><br>
+Code national de l'étudiant{% if individu.sexe == 'F' %}e{% endif %} : {{ individu.cne }} <br><br>
+né{% if individu.sexe == 'F' %}e{% endif %} le {{ individu.dateNaissance |date("d/m/Y") }} à {{ individu.lieuNaissance}} ({{ individu.paysNaissance }}) <br><br>
+est réguliérement inscrit{% if individu.sexe == 'F' %}e{% endif %} à la {{ individu.libelleLongEtablissement }} pour l'{{ anneeUniversitaire.libAnu }}. <br><br><br><br>
+
+Diplôme : {{ etape.libDip }} <br><br>
+Année : {{ etape.libEtp }} <br><br><br><br>
+
+<table style="width:100%"><tr><td align="right"> Fait à Kenitra, le {{ "now"|date("d/m/Y") }}
+</td></tr></table> 
+
+<div style="text-align:right;width:100%">
+	
+		{% if (individu.libelleCourtEtablissement == 'ENSA Kenit') %}
+		 <img src="{{ asset('bundles/bsecandidature/img/ENSA.png') }}" alt="Logo" height="50" width="50"> 
+		{% endif %}
+		{% if (individu.libelleCourtEtablissement == 'ENCG Keni') %}
+		 <img src="{{ asset('bundles/bsecandidature/img/ENCG.png') }}" alt="Logo" height="50" width="50"> 
+		{% endif %}
+		{% if (individu.libelleCourtEtablissement == 'F.Lettres') %}
+		<img src="{{ asset('bundles/bsecandidature/img/FL.png') }}" alt="Logo" height="50" width="50"> 
+		{% endif %}
+		{% if (individu.libelleCourtEtablissement == 'F.Sciences') %}
+		 <img src="{{ asset('bundles/bsecandidature/img/FS.png') }}" alt="Logo" height="50" width="50"> 
+		{% endif %}
+		{% if (individu.libelleCourtEtablissement == 'FacScJurid') %}
+		<img src="{{ asset('bundles/bsecandidature/img/FD.png') }}" alt="Logo" height="50" width="50"> 
+		{% endif %}  
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</div> 
+
+
+
+<table style="width:100%"><tr><td align="right"> {{ individu.codApogee }} <br/>  </td></tr></table>  <br>
+
+<hr>
+<table><tr style="line-height:20px"><td>Adresse : {{ individu.AdresseEtablissement }} </td>
+
+	<td align="right"> 
+		{% if (individu.libelleCourtEtablissement == 'ENSA Kenit') %}
+		 ص ب: 242 
+		{% endif %}
+		{% if (individu.libelleCourtEtablissement == 'ENCG Keni') %}
+		 ص ب: 1422 
+		{% endif %}
+		{% if (individu.libelleCourtEtablissement == 'F.Lettres') %}
+		 ص ب: 401 
+		{% endif %}
+		{% if (individu.libelleCourtEtablissement == 'F.Sciences') %}
+		 ص ب: 133 
+		{% endif %}
+		{% if (individu.libelleCourtEtablissement == 'FacScJurid') %}
+		 ص ب: 242 
+		{% endif %}  العنوان: 
+
+	</td></tr>
+<tr><td> {{ individu.VillepaysEtablissement }} </td><td align="right"> القنيطرة - المغرب</td></tr>
+<tr><td> {{ individu.TelephoneEtablissement }} </td><td></td></tr></table>
+<hr>
+
+<br/><br/>
+

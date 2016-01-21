@@ -1,0 +1,31 @@
+<li>
+	<a href="{{ path('bse_candidature_ficheIndividuelle') }}" {% if app.request.get('_route') == 'bse_candidature_ficheIndividuelle' %}
+class="active" {% endif %}><i class='fa icon-user-3'></i><span>Fiche individuelle</span> <span class="pull-right"></span></a>
+</li>
+</li>
+<li>
+	<a href="{{ path('bse_candidature_inscriptionPedagogique') }}" {% if app.request.get('_route') == 'bse_candidature_inscriptionPedagogique' %}
+class="active" {% endif %}><i class='fa icon-slideshare'></i><span>Inscription pédagogique</span> <span class="pull-right"></span></a>
+</li>
+<li>
+	<a href="{{ path('bse_candidature_cursus') }}" {% if app.request.get('_route') == 'bse_candidature_cursus' %}
+class="active" {% endif %}><i class='icon-th-list'></i><span>Cursus universitaire</span> <span class="pull-right"></span></a>
+</li>
+<li>
+	<a href="{{ path('bse_candidature_resultats') }}" {% if app.request.get('_route') == 'bse_candidature_resultats' %}
+class="active" {% endif %}><i class="icon-graduation-cap"></i><span>Résultats annuels</span> <span class="pull-right"></span></a>
+</li>
+<li>
+	<a href="{{ path('bse_candidature_examens') }}" {% if app.request.get('_route') == 'bse_candidature_examens' %}
+class="active" {% endif %}><i class="fa icon-calendar-circled"></i><span>Calendrier des examens</span> <span class="pull-right"></span></a>
+</li>
+<li>
+
+<!--
+<a href="{{ path('bse_candidature_emploiDuTemps') }}" {% if app.request.get('_route') == 'bse_candidature_emploiDuTemps' %}
+class="active" {% endif %}><i class='fa icon-calendar-1'></i><span>Emploi du temps</span> <span class="pull-right"></span></a>
+-->
+<!-- <a href="#" {% if app.request.get('_route') == 'bse_candidature_emploiDuTemps' %}
+class="active" {% endif %}><i class='fa icon-calendar-1'></i><span>Emploi du temps</span> <span class="pull-right"></span></a>
+</li> -->
+

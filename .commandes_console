@@ -32,3 +32,6 @@ php app/console assets:install
 *********************************************************************************************************
 
 git archive -o patch.zip db6d74b68b1e0a5f7adabe0d6251acf29d6b57fc $(git diff-tree --no-commit-id --name-only -r db6d74b68b1e0a5f7adabe0d6251acf29d6b57fc)
+
+
+git archive -o patch_FS.zip 1c6558824eaeaf833492077bd405a4b6dcb4238f $(git diff-tree --no-commit-id --name-only -r 1c6558824eaeaf833492077bd405a4b6dcb4238f)

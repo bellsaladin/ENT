@@ -1,0 +1,74 @@
+{% extends 'BseCandidatureBundle::layout_inside.html.twig' %}
+
+{% block content_inside %} 
+    <div class="page-heading">
+        <h4 class="pull-left" style="text-transform: uppercase;"><b><i class='fa icon-user-3'></i><span> Emploi du temps</b></h4>
+<!--
+    <span class="pull-right">
+            <a href="{{ path('bse_candidature_pdf_emploiTemps') }}" class="btn btn-sm btn-white-1" role="button" data-toggle="tooltip" data-placement="left" title="Imprimez votre Emploi Du Temps">
+                Imprimer <span class="glyphicon glyphicon-print" aria-hidden="true"></span>
+            </a>
+        </span>
+        -->
+    </div>
+    <div class="row">
+
+    </div>
+    <div id="visualTimeTable">
+        <img style="display:none; width: 100%;" src=""/>
+    </div>
+
+{% endblock %}
+
+{% block extra_css %}
+	<link href="{{ asset('bundles/uitent/libs/bootstrap-timetable/css/tribal-timetable.css') }}" rel="stylesheet" />
+	<link href="{{ asset('bundles/uitent/libs/bootstrap-timetable/css/tribal-timetable.css') }}" rel="stylesheet" />
+{% endblock %}
+
+{% block extra_js %}
+	<script src="{{ asset('bundles/uitent/libs/bootstrap-timetable/js/tribal.js') }}"></script>
+	<script src="{{ asset('bundles/uitent/libs/bootstrap-timetable/js/tribal-timetable.js') }}"></script>
+	<script src="{{ asset('bundles/uitent/libs/bootstrap-timetable/js/tribal-shared.js') }}"></script>
+	<script src="{{ asset('bundles/uitent/libs/bootstrap-timetable/js/bootstrap-tooltip.js') }}"></script>
+	<script src="{{ asset('bundles/uitent/libs/bootstrap-timetable/js/bootstrap-collapse.js') }}"></script>
+
+    <script type="text/javascript">
+    jQuery(document).ready(function($){
+        var largeur = 1280;
+        var hauteur = 660;
+		var CodeEtudiant = 11234000;
+		var semaine = 23;
+        /*
+        var actionUrl = "http://localhost/UIT/VTimeTable/vue_etudiant_verticale.php?current_year=2014&current_student="+ CodeEtudiant +"&current_week="+ semaine +"&lar=" + largeur + " &hau=" + hauteur;
+        */
+
+        var actionUrl = "http://localhost/UIT/VTimeTable/vue_etudiant_verticale.php?current_year=2014&current_student="+ CodeEtudiant +"&lar=" + largeur + " &hau=" + hauteur;
+
+
+        /*var actionUrl = 'https://www.cva.u-paris10.fr/edt/vtdemo/vue_prof_verticale.php?current_year=2015&profs_multi[]=600006&current_week=16&hideprivate=0&hideprobleme=0&lar=800&hau=661' ;*/
+        $('#visualTimeTable img').one("load", function() {
+            $(this).show();
+        }).each(function() {
+          if(this.complete) $(this).load();
+        });
+        
+        $('#visualTimeTable img').attr('src', actionUrl );
+
+        //$('#visualTimeTable img').show();
+        
+        /*$.ajax( actionUrl )
+          .done(function(data) {
+            //$('#visualTimeTable').html(data);
+            //alert( "done" );
+            $('#visualTimeTable').html('<img src="' + data + '" />');
+
+          })
+          .fail(function() {
+            alert( "error" );
+          })
+          .always(function() {
+            //alert( "complete" );
+          });*/
+    });
+    </script>
+{% endblock %}

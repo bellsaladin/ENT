@@ -2,15 +2,73 @@ bse_candidature_welcome:
     pattern:  /
     defaults: { _controller: BseCandidatureBundle:Default:index }
 
-# bse_candidature_homepage:
-#     path:     /hello/{name}
-#     defaults: { _controller: BseCandidatureBundle:Default:index }
-
-
 bse_candidature_generatePdf:
-    pattern:  /candidature/generatePdf
+    pattern:  /generatePdf
     defaults: { _controller: BseCandidatureBundle:Candidature:generatePdf }
+
+bse_candidature_codeBarre:
+    pattern:  /codeBarre/{codeApogee}
+    defaults: { _controller: BseCandidatureBundle:Candidature:codeBarre }
+
+bse_candidature_ficheIndividuelle:
+    pattern:     /ficheIndividuelle
+    defaults: { _controller: BseCandidatureBundle:Candidature:ficheIndividuelle }
+
+bse_candidature_ficheIndividuelle:
+    pattern:     /ficheIndividuelle
+    defaults: { _controller: BseCandidatureBundle:Candidature:ficheIndividuelle }
+
+bse_candidature_inscriptionPedagogique:
+    pattern:     /inscriptionPedagogique
+    defaults: { _controller: BseCandidatureBundle:Candidature:inscriptionPedagogique }
+
+bse_candidature_cursus:
+    pattern:     /cursus
+    defaults: { _controller: BseCandidatureBundle:Candidature:cursus }
+
+bse_candidature_resultats:
+    pattern:     /resultats
+    defaults: { _controller: BseCandidatureBundle:Candidature:resultats }
+
+bse_candidature_examens:
+    pattern:     /examens
+    defaults: { _controller: BseCandidatureBundle:Candidature:examens }
+
+
+bse_candidature_emploiDuTemps:
+    path:     /emploiDuTemps
+    defaults: { _controller: BseCandidatureBundle:Candidature:emploiDuTemps }
+
+
+bse_candidature_pdf_attestationInscription:
+    pattern:  /doc/attestationInscription
+    defaults: { _controller: BseCandidatureBundle:Candidature:pdfAttestationInscription }
+
+bse_candidature_pdf_resultats:
+    pattern:  /doc/resultats
+    defaults: { _controller: BseCandidatureBundle:Candidature:pdfResultats }
+
+bse_candidature_pdf_cursus:
+    pattern:  /doc/cursus
+    defaults: { _controller: BseCandidatureBundle:Candidature:pdfCursus }
+
+bse_candidature_pdf_inscriptionPedagogique:
+    pattern:  /doc/inscriptionPedagogique
+    defaults: { _controller: BseCandidatureBundle:Candidature:pdfInscriptionPedagogique }
+
+bse_candidature_pdf_examens:
+    pattern:  /doc/examens
+    defaults: { _controller: BseCandidatureBundle:Candidature:pdfExamen }
+
+bse_candidature_pdf_emploidutemps:
+    pattern:  /doc/emploidutemps
+    defaults: { _controller: BseCandidatureBundle:Candidature:pdfEmploidutemps }
+
+bse_candidature_pdf_emploiTemps:
+    pattern:     /doc/emploitemps
+    defaults: { _controller: BseCandidatureBundle:Candidature:pdfEmploiTemps }
 
 BseCandidatureBundle_candidature:
         resource: "@BseCandidatureBundle/Resources/config/routing/candidature.yml"
-        prefix:   /candidature
+        prefix:   /
+
