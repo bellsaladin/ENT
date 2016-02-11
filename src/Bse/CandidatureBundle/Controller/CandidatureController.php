@@ -222,7 +222,7 @@ class CandidatureController extends Controller
     {
 
 
-    $em = $this->getDoctrine()->getManager();
+        $em = $this->getDoctrine()->getManager();
 
         $user = $this->get('security.context')->getToken()->getUser();
 
@@ -240,8 +240,8 @@ class CandidatureController extends Controller
                    ->from('BseCandidatureBundle:Cursusresultat', 'c')
                    ->where(
                      $queryBuilder->expr()->eq('c.codInd', $individu->getCodInd()),
-                     $queryBuilder->expr()->eq('c.etat', 1),
-                     //$queryBuilder->expr()->eq('c.codAnnee', 2014),
+                     //$queryBuilder->expr()->eq('c.etat', 1),
+                     $queryBuilder->expr()->lt('c.codAnnee', $individu->getCodAnuIna()),
                      //$queryBuilder->expr()->eq('c.codSession', 1),
                      $queryBuilder->expr()->isNotNull('c.note')
                    )
@@ -471,6 +471,7 @@ class CandidatureController extends Controller
                    ->where(
                      $queryBuilder->expr()->eq('c.codInd', $individu->getCodInd()),
                      $queryBuilder->expr()->eq('c.etat', 1),
+                     $queryBuilder->expr()->lt('c.codAnnee', $individu->getCodAnuIna()),
                      //$queryBuilder->expr()->eq('c.codAnnee', 2014),
                      //$queryBuilder->expr()->eq('c.codSession', 1),
                      $queryBuilder->expr()->isNotNull('c.note')
@@ -738,14 +739,13 @@ class CandidatureController extends Controller
     public function pdfExamenAction(Request $request)
     {
         // ###################### Load candidature data ######################        
-         $em = $this->getDoctrine()->getManager();
+        $em = $this->getDoctrine()->getManager();
 
         $user = $this->get('security.context')->getToken()->getUser();
 
         if(!$user instanceof FOSUserEntity){
             return $this->redirect($this->generateUrl('bse_candidature_welcome'));
         }
-
 
         $lastCompeletedSynchronisation = $this->getLastCompletedSynchronisation();
 
@@ -812,12 +812,15 @@ class CandidatureController extends Controller
             //'examen' => $examen,
             //'etape' => $etape,
         'individu' => $individu,
-        'tab' => $examens // @TEST_ONLY
+        'tab' => $examens,
+        'pdfObj' => $pdfObj// @TEST_ONLY
             //'anneeUniversitaire' => $anneeUniverstaire
 
         ));
+
         // output the HTML content
         $pdfObj->writeHTML($html);
+        
         
         $response = new Response($pdfObj->Output('document.pdf', 'I'), 200, array('Content-Type' => 'application/pdf; charset=utf-8'));
         $this->disableCacheOnResponse($response);

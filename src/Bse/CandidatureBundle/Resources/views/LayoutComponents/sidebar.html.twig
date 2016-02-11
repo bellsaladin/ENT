@@ -1,4 +1,9 @@
 <li>
+	<a href="{{ path('candidature') }}" {% if app.request.get('_route') == 'candidature' %}
+class="active" {% endif %}><i class='fa icon-home-3'></i><span>Mon espace</span> <span class="pull-right"></span></a>
+</li>
+
+<li>
 	<a href="{{ path('bse_candidature_ficheIndividuelle') }}" {% if app.request.get('_route') == 'bse_candidature_ficheIndividuelle' %}
 class="active" {% endif %}><i class='fa icon-user-3'></i><span>Fiche individuelle</span> <span class="pull-right"></span></a>
 </li>
